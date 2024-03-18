@@ -1,11 +1,7 @@
 import React, {Component} from "react";
 import {Switch, Route, Redirect } from "react-router-dom";
-import  "./styles/style.css";
-import  "./styles/styleMobile.css";
-import Index from "./index";
-import User_registration from "./../components/registration/user_registrations";
-// import LandingPage from "./landing_page/landing-page";
-
+import  "./styles/adminStyle.css";
+import AdminHome from "./Admin/home";
 
 
 
@@ -25,8 +21,9 @@ class MainComponent extends Component{
 
             <div>
                 <Switch>
-                
 
+                <Route path="/admin" component={AdminHome}/>
+                    <Redirect from="/" to="/admin"/>
                   
                 </Switch>
 
