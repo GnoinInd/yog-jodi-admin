@@ -25,7 +25,21 @@ function WebsiteSetup(props) {
       }, []);
 
     let motherTongueArr = ["Assamese", "Bengali", "Bodo", "Dogri", "Gujarati", "Hindi", "Kannada", "Kashmiri", "Maithili", "Malayalam", "Manipuri", "Marathi", "Nepali", "Odia", "Punjabi", "Sanskrit", "Santali", "Sindhi", "Tamil", "Telugu", "Urdu"];
-      const{websiteList}=props;
+    let religionArr = ["Hindu", "Muslim", "Sikh", "Christian", "Buddhist", "Jain", "Parsi", "Jewish", "Bahai"];
+    let maritalStatusArr = ["Never Married", "Awaiting Divorce", "Divorced", "Widowed"];
+    let empolyeArr = ["Private Sector", "Government/Public Sector", "Civil Services", "Not Working"];
+    let occupationsArr = ["Engineer", "Architect", "Scientist", "Teacher", "Technician", "Civil engineer", "Electrical engineer", "Psychologist"];
+    let incomeArr = ["No Income", "Rs. 1 - 2 Lakh", "Rs. 2 - 3 Lakh", "Rs. 3 - 4 Lakh", "Rs. 4 - 5 Lakh"];
+    let yearsOfExpris = ["0 - 1 year", "1 - 3 years", "3 - 5 years", "5 - 7 years", "7 - 10 years"];
+    let highDegrees = ["BBA", "BMS", "BFA", "BEM", "B.Sc", "BA", "B.Tech", "BCA", "BPT", "CA", "CS"];
+    let fatherOccups = ["Business/Entrepreneur", "Service-Private", "Army/Armed Forces", "Civil Services", "Retired"];
+    let motherOccups = ["Housewife", "Service-Private", "Teacher", "Civil Services", "Retired"];
+    let countries = ["Russia", "Canada", "China", "US of America", "Brazil", "Australia", "India", "Argentina", "Kazakhstan", "Algeria"];
+    let skills = ["Problem solving", "Communication", "Interpersonal", "Time management"];
+    let boardsAr = ["CBSE", "ICSE","IB","NIOS" ,"AISSCE","JAC Ranchi"];
+    
+    
+    const{websiteList}=props;
 
       console.log(showList);
 
@@ -222,7 +236,7 @@ function WebsiteSetup(props) {
                 </div>
                 }
                 {websiteList===5&&
-                <div className="bg-white w-75 m-auto py-3 mt-3 position-relative">
+                <div className="bg-white w-75 m-auto py-3 my-3 position-relative">
                     <div className="d-flex px-4 fw-bold justify-content-between">
                         <div>forms</div>
                     </div>
@@ -231,7 +245,7 @@ function WebsiteSetup(props) {
                         <div className="col-9 ">
                             <div onClick={()=>setShowList(1)}><input type="text" className="appereInput w-75" value="All" /></div>
                             {showList===1&&
-                                <div className="dropdownItem">
+                            <div className="dropdownItem">
                                 <ul ref={item2ref}>
                                     {motherTongueArr.map((m1,index)=>(
                                         <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
@@ -248,9 +262,9 @@ function WebsiteSetup(props) {
                         <div className="col-9">
                             <div onClick={()=>setShowList(2)}><input type="text" className="appereInput w-75" value="All" /></div>
                             {showList===2&&
-                                <div className="dropdownItem">
+                            <div className="dropdownItem">
                                 <ul ref={item2ref}>
-                                    {motherTongueArr.map((m1,index)=>(
+                                    {religionArr.map((m1,index)=>(
                                         <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
                                     ))}
                                 </ul>
@@ -261,80 +275,254 @@ function WebsiteSetup(props) {
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Caste</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(3)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===3&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {motherTongueArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Caste</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
-                        <div className="col-3">Marital status</div>
-                        <div className="col-7"></div>
+                        <div className="col-3">Marital Status</div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(4)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===4&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {maritalStatusArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Marital Status</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Height</div>
-                        <div className="col-7"></div>
+                        <div className="col-9 d-flex">
+                            <div>
+                                <div onClick={()=>setShowList(41)}><input type="text" className="appereInput" value="" placeholder="Minimum Height" /></div>
+                            </div>
+                            <div className="mx-3">
+                                <div onClick={()=>setShowList(42)}><input type="text" className="appereInput " value="" placeholder="Maximum Height" /> </div>
+                            </div>
+                           
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Employed In</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(5)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===5&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {empolyeArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Employed</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Occupation</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(6)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===6&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {occupationsArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Occupation</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Organization</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(7)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===7&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Organization</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Annual Income</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(8)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===8 &&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {incomeArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Income</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Years Of Experience</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(9)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===9&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {yearsOfExpris.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Yrs of Experience</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Highest Degree</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(10)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===10&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {incomeArr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Income</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Father's Occupation</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(11)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===11&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {fatherOccups.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Father's Occupation</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Mother's Occupation</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(12)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===12&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {motherOccups.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Mother's Occupation</button>
+                        </div>
                     </div>
-                    <div className="row m-2 px-1 mt-5 position-relative">
+                    {/* <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Family type</div>
                         <div className="col-7"></div>
-                    </div>
+                    </div> */}
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Age</div>
-                        <div className="col-7"></div>
-                    </div>
-                    <div className="row m-2 px-1 mt-5 position-relative">
-                        <div className="col-3">Height</div>
-                        <div className="col-7"></div>
+                        <div className="col-9 d-flex">
+                            <div>
+                                <div onClick={()=>setShowList(41)}><input type="text" className="appereInput" value="" placeholder="Minimum Age" /></div>
+                            </div>
+                            <div className="mx-3">
+                                <div onClick={()=>setShowList(42)}><input type="text" className="appereInput " value="" placeholder="Maximum Age" /> </div>
+                            </div>
+                           
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Country</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(13)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===13&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {countries.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Country</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">State</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(14)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===14&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {countries.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New State</button>
+                        </div>
                     </div>
                     <div className="row m-2 px-1 mt-5 position-relative">
                         <div className="col-3">Skill</div>
-                        <div className="col-7"></div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(15)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===15&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {skills.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Skill</button>
+                        </div>
                     </div>
-                    <div className="row m-2 px-1 mt-5">
-                        <div className="col-3">Borad</div>
-                        <div className="col-7"></div>
-                    </div>
-                    <div className="row m-2 px-1 mt-5">
-                        <div className="col-3">Qualification</div>
-                        <div className="col-7"></div>
-                    </div>
+                    <div className="row m-2 px-1 mt-5 position-relative">
+                        <div className="col-3">Board</div>
+                        <div className="col-9">
+                            <div onClick={()=>setShowList(16)}><input type="text" className="appereInput w-75" value="All" /></div>
+                            {showList===16&&
+                            <div className="dropdownItem">
+                                <ul ref={item2ref}>
+                                    {boardsAr.map((m1,index)=>(
+                                        <li onClick={()=>setShowList(0)} key={index}>{m1} <i class="fa-solid fa-trash deleteBtn"></i></li>
+                                    ))}
+                                </ul>
+                            </div>
+                            }
+                            <button className="addItem" onClick={()=>setAddNewItem(true)}>Add New Board</button>
+                        </div>
+                    </div> 
                     
                    
                 </div>
